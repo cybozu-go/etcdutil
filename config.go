@@ -25,14 +25,22 @@ var (
 
 // Config represents configuration parameters to access etcd.
 type Config struct {
+	// Endpoints are etcd servers.
 	Endpoints []string `yaml:"endpoints"`
-	Prefix    string   `yaml:"prefix"`
-	Timeout   string   `yaml:"timeout"`
-	Username  string   `yaml:"username"`
-	Password  string   `yaml:"password"`
-	TLSCA     string   `yaml:"tls-ca"`
-	TLSCert   string   `yaml:"tls-cert"`
-	TLSKey    string   `yaml:"tls-key"`
+	// Prefix is etcd prefix key.
+	Prefix string `yaml:"prefix"`
+	// Timeout is dial timeout of the etcd client connection.
+	Timeout string `yaml:"timeout"`
+	// Username is username for loging in to the etcd.
+	Username string `yaml:"username"`
+	// Password is password for loging in to the etcd.
+	Password string `yaml:"password"`
+	// TLSCA is root CA path.
+	TLSCA string `yaml:"tls-ca"`
+	// TLSCert is TLS client certificate path.
+	TLSCert string `yaml:"tls-cert"`
+	// TLSKey is TLS client private key path.
+	TLSKey string `yaml:"tls-key"`
 }
 
 // NewConfig creates Config with default values.
