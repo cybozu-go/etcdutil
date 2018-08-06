@@ -1,103 +1,39 @@
 package etcdutil
 
-import (
-	"crypto/tls"
-	"crypto/x509"
-	"errors"
-	"io/ioutil"
-	"time"
-
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/clientv3/namespace"
-)
-
 const (
-	// DefaultPrefix is default etcd prefix key
-	DefaultPrefix = ""
 	// DefaultTimeout is default etcd connection timeout.
 	DefaultTimeout = "2s"
 )
 
 var (
 	// DefaultEndpoints is default etcd servers.
-	DefaultEndpoints = []string{"http://localhost:2379"}
+	DefaultEndpoints = []string{"http://127.0.0.1:2379", "http://127.0.0.1:4001"}
 )
 
 // Config represents configuration parameters to access etcd.
 type Config struct {
 	// Endpoints are etcd servers.
-	Endpoints []string `yaml:"endpoints"`
+	Endpoints []string `yaml:"endpoints" json:"endpoints" toml:"endpoints"`
 	// Prefix is etcd prefix key.
-	Prefix string `yaml:"prefix"`
+	Prefix string `yaml:"prefix" json:"prefix" toml:"prefix"`
 	// Timeout is dial timeout of the etcd client connection.
-	Timeout string `yaml:"timeout"`
+	Timeout string `yaml:"timeout" json:"timeout" toml:"timeout"`
 	// Username is username for loging in to the etcd.
-	Username string `yaml:"username"`
+	Username string `yaml:"username" json:"username" toml:"username"`
 	// Password is password for loging in to the etcd.
-	Password string `yaml:"password"`
+	Password string `yaml:"password" json:"password" toml:"password"`
 	// TLSCA is root CA path.
-	TLSCA string `yaml:"tls-ca"`
+	TLSCA string `yaml:"tls-ca" json:"tls-ca" toml:"tls-ca"`
 	// TLSCert is TLS client certificate path.
-	TLSCert string `yaml:"tls-cert"`
+	TLSCert string `yaml:"tls-cert" json:"tls-cert" toml:"tls-cert"`
 	// TLSKey is TLS client private key path.
-	TLSKey string `yaml:"tls-key"`
+	TLSKey string `yaml:"tls-key" json:"tls-key" toml:"tls-key"`
 }
 
 // NewConfig creates Config with default values.
 func NewConfig() *Config {
 	return &Config{
 		Endpoints: DefaultEndpoints,
-		Prefix:    DefaultPrefix,
 		Timeout:   DefaultTimeout,
 	}
-}
-
-// Client creates etcd client.
-func (c *Config) Client() (*clientv3.Client, error) {
-	timeout, err := time.ParseDuration(c.Timeout)
-	if err != nil {
-		return nil, err
-	}
-
-	cfg := clientv3.Config{
-		Endpoints:   c.Endpoints,
-		DialTimeout: timeout,
-		Username:    c.Username,
-		Password:    c.Password,
-	}
-
-	tlsCfg := &tls.Config{}
-	if len(c.TLSCA) != 0 {
-		rootCACert, err := ioutil.ReadFile(c.TLSCA)
-		if err != nil {
-			return nil, err
-		}
-		rootCAs := x509.NewCertPool()
-		ok := rootCAs.AppendCertsFromPEM(rootCACert)
-		if !ok {
-			return nil, errors.New("Failed to parse PEM file")
-		}
-		tlsCfg.RootCAs = rootCAs
-		cfg.TLS = tlsCfg
-	}
-	if len(c.TLSCert) != 0 && len(c.TLSKey) != 0 {
-		cert, err := tls.LoadX509KeyPair(c.TLSCert, c.TLSKey)
-		if err != nil {
-			return nil, err
-		}
-		tlsCfg.Certificates = []tls.Certificate{cert}
-		cfg.TLS = tlsCfg
-	}
-
-	client, err := clientv3.New(cfg)
-	if err != nil {
-		return nil, err
-	}
-	if c.Prefix != "" {
-		client.KV = namespace.NewKV(client.KV, c.Prefix)
-		client.Watcher = namespace.NewWatcher(client.Watcher, c.Prefix)
-		client.Lease = namespace.NewLease(client.Lease, c.Prefix)
-	}
-
-	return client, nil
 }
