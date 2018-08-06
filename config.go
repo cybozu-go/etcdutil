@@ -31,9 +31,10 @@ type Config struct {
 }
 
 // NewConfig creates Config with default values.
-func NewConfig() *Config {
+func NewConfig(prefix string) *Config {
 	return &Config{
 		Endpoints: DefaultEndpoints,
+		Prefix:    prefix,
 		Timeout:   DefaultTimeout,
 	}
 }

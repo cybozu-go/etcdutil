@@ -62,8 +62,7 @@ func testEtcdClient(t *testing.T) {
 		clientURL = etcdClientURL
 	}
 
-	cfg := NewConfig()
-	cfg.Prefix = t.Name() + "/"
+	cfg := NewConfig(t.Name() + "/")
 	cfg.Endpoints = []string{clientURL}
 	_, err := NewClient(cfg)
 	if err != nil {

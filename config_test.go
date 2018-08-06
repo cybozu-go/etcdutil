@@ -12,6 +12,7 @@ import (
 func testEtcdConfigYAML(t *testing.T) {
 	t.Parallel()
 
+	prefix := t.Name() + "/"
 	cases := []struct {
 		source   string
 		expected Config
@@ -39,6 +40,7 @@ password: testpass
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				Username:  "testuser",
 				Password:  "testpass",
 			},
@@ -52,6 +54,7 @@ tls-key: client.key
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				TLSCA:     "ca.crt",
 				TLSCert:   "client.crt",
 				TLSKey:    "client.key",
@@ -60,7 +63,7 @@ tls-key: client.key
 	}
 
 	for _, c := range cases {
-		cfg := NewConfig()
+		cfg := NewConfig(prefix)
 		err := yaml.Unmarshal([]byte(c.source), cfg)
 		if err != nil {
 			t.Error(err)
@@ -73,6 +76,7 @@ tls-key: client.key
 func testEtcdConfigJSON(t *testing.T) {
 	t.Parallel()
 
+	prefix := t.Name() + "/"
 	cases := []struct {
 		source   string
 		expected Config
@@ -105,6 +109,7 @@ func testEtcdConfigJSON(t *testing.T) {
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				Username:  "testuser",
 				Password:  "testpass",
 			},
@@ -120,6 +125,7 @@ func testEtcdConfigJSON(t *testing.T) {
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				TLSCA:     "ca.crt",
 				TLSCert:   "client.crt",
 				TLSKey:    "client.key",
@@ -128,7 +134,7 @@ func testEtcdConfigJSON(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		cfg := NewConfig()
+		cfg := NewConfig(prefix)
 		err := json.Unmarshal([]byte(c.source), cfg)
 		if err != nil {
 			t.Error(err)
@@ -141,6 +147,7 @@ func testEtcdConfigJSON(t *testing.T) {
 func testEtcdConfigTOML(t *testing.T) {
 	t.Parallel()
 
+	prefix := t.Name() + "/"
 	cases := []struct {
 		source   string
 		expected Config
@@ -165,6 +172,7 @@ password = "testpass"
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				Username:  "testuser",
 				Password:  "testpass",
 			},
@@ -178,6 +186,7 @@ tls-key = "client.key"
 			expected: Config{
 				Endpoints: DefaultEndpoints,
 				Timeout:   DefaultTimeout,
+				Prefix:    prefix,
 				TLSCA:     "ca.crt",
 				TLSCert:   "client.crt",
 				TLSKey:    "client.key",
@@ -186,7 +195,7 @@ tls-key = "client.key"
 	}
 
 	for _, c := range cases {
-		cfg := NewConfig()
+		cfg := NewConfig(prefix)
 		err := toml.Unmarshal([]byte(c.source), cfg)
 		if err != nil {
 			t.Error(err)
