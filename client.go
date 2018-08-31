@@ -29,7 +29,7 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	tlsCfg := &tls.Config{}
 	if len(c.TLSCA) != 0 {
 		var rootCACert []byte
-		if _, err := os.Stat(c.TLSCA); err != nil {
+		if _, err := os.Stat(c.TLSCA); err == nil {
 			rootCACert, err = ioutil.ReadFile(c.TLSCA)
 			if err != nil {
 				return nil, err
