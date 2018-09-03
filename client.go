@@ -5,7 +5,6 @@ import (
 	"crypto/x509"
 	"errors"
 	"io/ioutil"
-	"os"
 	"time"
 
 	"github.com/coreos/etcd/clientv3"
@@ -27,9 +26,9 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	}
 
 	tlsCfg := &tls.Config{}
-	if len(c.TLSCA) != 0 {
+	if len(c.TLSCAFile) != 0 || len(c.TLSCA) != 0 {
 		var rootCACert []byte
-		if _, err := os.Stat(c.TLSCA); err == nil {
+		if len(c.TLSCAFile) != 0 {
 			rootCACert, err = ioutil.ReadFile(c.TLSCA)
 			if err != nil {
 				return nil, err
@@ -45,25 +44,18 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 		tlsCfg.RootCAs = rootCAs
 		cfg.TLS = tlsCfg
 	}
-	if len(c.TLSCert) != 0 && len(c.TLSKey) != 0 {
-		_, certErr := os.Stat(c.TLSCert)
-		_, keyErr := os.Stat(c.TLSKey)
+	if (len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0) || (len(c.TLSCert) != 0 && len(c.TLSKey) != 0) {
 		var cert tls.Certificate
-		if certErr == nil && keyErr == nil {
-			cert, err = tls.LoadX509KeyPair(c.TLSCert, c.TLSKey)
-			if err != nil {
-				return nil, err
-			}
-		} else if certErr != nil && keyErr != nil {
-			cert, err = tls.X509KeyPair([]byte(c.TLSCert), []byte(c.TLSKey))
+		if len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0 {
+			cert, err = tls.LoadX509KeyPair(c.TLSCertFile, c.TLSKeyFile)
 			if err != nil {
 				return nil, err
 			}
 		} else {
-			if certErr == nil {
-				return nil, errors.New("tls-cert is a file, but tls-key is not")
+			cert, err = tls.X509KeyPair([]byte(c.TLSCert), []byte(c.TLSKey))
+			if err != nil {
+				return nil, err
 			}
-			return nil, errors.New("tls-key is a file, but tls-cert is not")
 		}
 		tlsCfg.Certificates = []tls.Certificate{cert}
 		cfg.TLS = tlsCfg

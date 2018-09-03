@@ -22,11 +22,17 @@ type Config struct {
 	Username string `yaml:"username" json:"username" toml:"username"`
 	// Password is password for loging in to the etcd.
 	Password string `yaml:"password" json:"password" toml:"password"`
-	// TLSCA is root CA path or raw string.
+	// TLSCAFile is root CA path.
+	TLSCAFile string `yaml:"tls-ca-file" json:"tls-ca-file" toml:"tls-ca-file"`
+	// TLSCA is root CA raw string.
 	TLSCA string `yaml:"tls-ca" json:"tls-ca" toml:"tls-ca"`
-	// TLSCert is TLS client certificate path or raw string.
+	// TLSCertFile is TLS client certificate path.
+	TLSCertFile string `yaml:"tls-cert-file" json:"tls-cert-file" toml:"tls-cert-file"`
+	// TLSCert is TLS client certificate raw string.
 	TLSCert string `yaml:"tls-cert" json:"tls-cert" toml:"tls-cert"`
-	// TLSKey is TLS client private key path or raw string.
+	// TLSKeyFile is TLS client private key.
+	TLSKeyFile string `yaml:"tls-key-file" json:"tls-key-file" toml:"tls-key-file"`
+	// TLSKey is TLS client private key raw string.
 	TLSKey string `yaml:"tls-key" json:"tls-key" toml:"tls-key"`
 }
 

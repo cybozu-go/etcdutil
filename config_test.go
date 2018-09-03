@@ -47,17 +47,17 @@ password: testpass
 		},
 		{
 			source: `
-tls-ca: ca.crt
-tls-cert: client.crt
-tls-key: client.key
+tls-ca-file: ca.crt
+tls-cert-file: client.crt
+tls-key-file: client.key
 `,
 			expected: Config{
-				Endpoints: DefaultEndpoints,
-				Timeout:   DefaultTimeout,
-				Prefix:    prefix,
-				TLSCA:     "ca.crt",
-				TLSCert:   "client.crt",
-				TLSKey:    "client.key",
+				Endpoints:   DefaultEndpoints,
+				Timeout:     DefaultTimeout,
+				Prefix:      prefix,
+				TLSCAFile:   "ca.crt",
+				TLSCertFile: "client.crt",
+				TLSKeyFile:  "client.key",
 			},
 		},
 	}
@@ -117,18 +117,18 @@ func testEtcdConfigJSON(t *testing.T) {
 		{
 			source: `
 {
-    "tls-ca": "ca.crt",
-    "tls-cert": "client.crt",
-    "tls-key": "client.key"
+    "tls-ca-file": "ca.crt",
+    "tls-cert-file": "client.crt",
+    "tls-key-file": "client.key"
 }
 `,
 			expected: Config{
-				Endpoints: DefaultEndpoints,
-				Timeout:   DefaultTimeout,
-				Prefix:    prefix,
-				TLSCA:     "ca.crt",
-				TLSCert:   "client.crt",
-				TLSKey:    "client.key",
+				Endpoints:   DefaultEndpoints,
+				Timeout:     DefaultTimeout,
+				Prefix:      prefix,
+				TLSCAFile:   "ca.crt",
+				TLSCertFile: "client.crt",
+				TLSKeyFile:  "client.key",
 			},
 		},
 	}
@@ -179,17 +179,17 @@ password = "testpass"
 		},
 		{
 			source: `
-tls-ca = "ca.crt"
-tls-cert = "client.crt"
-tls-key = "client.key"
+tls-ca-file = "ca.crt"
+tls-cert-file = "client.crt"
+tls-key-file = "client.key"
 `,
 			expected: Config{
-				Endpoints: DefaultEndpoints,
-				Timeout:   DefaultTimeout,
-				Prefix:    prefix,
-				TLSCA:     "ca.crt",
-				TLSCert:   "client.crt",
-				TLSKey:    "client.key",
+				Endpoints:   DefaultEndpoints,
+				Timeout:     DefaultTimeout,
+				Prefix:      prefix,
+				TLSCAFile:   "ca.crt",
+				TLSCertFile: "client.crt",
+				TLSKeyFile:  "client.key",
 			},
 		},
 	}
