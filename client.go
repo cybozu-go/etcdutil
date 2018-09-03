@@ -26,10 +26,15 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	}
 
 	tlsCfg := &tls.Config{}
-	if len(c.TLSCA) != 0 {
-		rootCACert, err := ioutil.ReadFile(c.TLSCA)
-		if err != nil {
-			return nil, err
+	if len(c.TLSCAFile) != 0 || len(c.TLSCA) != 0 {
+		var rootCACert []byte
+		if len(c.TLSCAFile) != 0 {
+			rootCACert, err = ioutil.ReadFile(c.TLSCAFile)
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			rootCACert = []byte(c.TLSCA)
 		}
 		rootCAs := x509.NewCertPool()
 		ok := rootCAs.AppendCertsFromPEM(rootCACert)
@@ -39,10 +44,18 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 		tlsCfg.RootCAs = rootCAs
 		cfg.TLS = tlsCfg
 	}
-	if len(c.TLSCert) != 0 && len(c.TLSKey) != 0 {
-		cert, err := tls.LoadX509KeyPair(c.TLSCert, c.TLSKey)
-		if err != nil {
-			return nil, err
+	if (len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0) || (len(c.TLSCert) != 0 && len(c.TLSKey) != 0) {
+		var cert tls.Certificate
+		if len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0 {
+			cert, err = tls.LoadX509KeyPair(c.TLSCertFile, c.TLSKeyFile)
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			cert, err = tls.X509KeyPair([]byte(c.TLSCert), []byte(c.TLSKey))
+			if err != nil {
+				return nil, err
+			}
 		}
 		tlsCfg.Certificates = []tls.Certificate{cert}
 		cfg.TLS = tlsCfg
