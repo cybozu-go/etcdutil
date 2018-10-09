@@ -3,7 +3,6 @@ package etcdutil
 import (
 	"errors"
 	"flag"
-	"fmt"
 	"strings"
 )
 
@@ -15,7 +14,7 @@ func (v endpointsVal) String() string {
 	if v.Config == nil {
 		return "nil"
 	}
-	return fmt.Sprint(v.Config.Endpoints)
+	return strings.Join(v.Config.Endpoints, ",")
 }
 
 func (v endpointsVal) Set(s string) error {
