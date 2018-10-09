@@ -29,7 +29,7 @@ To read parameters from YAML (or JSON):
 To read parameters from command-line flags:
 
     import (
-        "flags"
+        "flag"
 
         "github.com/cybozu-go/etcdutil"
     )
