@@ -5,8 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.0] - 2018-10-09
 ### Added
-- Common command-line flags.
+- Common command-line flags (#7).
 
 ## [1.1.0] - 2018-09-14
 ### Added
@@ -16,5 +17,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/cybozu-go/cmd/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/cybozu-go/etcdutil/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/cybozu-go/etcdutil/compare/v1.0.0...v1.1.0
