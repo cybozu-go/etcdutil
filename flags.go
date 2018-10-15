@@ -34,6 +34,10 @@ func (v endpointsVal) Set(s string) error {
 	return nil
 }
 
+func (v endpointsVal) Type() string {
+	return "endpoints"
+}
+
 // AddFlags adds common set of command-line flags for etcd.
 func (c *Config) AddFlags(fs *flag.FlagSet) {
 	fs.Var(endpointsVal{c}, "etcd-endpoints", "comma-separated list of URLs")
