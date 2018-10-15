@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- AddPFlags method for github.com/spf13/pflag package.
+
 ## [1.2.2] - 2018-10-10
 ### Changed
 - Update Go module dependencies (#9).
