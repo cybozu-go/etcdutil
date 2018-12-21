@@ -11,7 +11,7 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	client, err := clientv3.New(*cfg)
+	client, err := clientv3.New(cfg)
 	if err != nil {
 		return nil, err
 	}

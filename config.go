@@ -55,10 +55,10 @@ func NewConfig(prefix string) *Config {
 }
 
 // NewClientV3Config constructs clientv3.Config
-func NewClientV3Config(c *Config) (*clientv3.Config, error) {
+func NewClientV3Config(c *Config) (clientv3.Config, error) {
 	timeout, err := time.ParseDuration(c.Timeout)
 	if err != nil {
-		return nil, err
+		return clientv3.Config{}, err
 	}
 	// workaround for https://github.com/etcd-io/etcd/issues/9949
 	endpoints := make([]string, len(c.Endpoints))
@@ -79,7 +79,7 @@ func NewClientV3Config(c *Config) (*clientv3.Config, error) {
 			var err error
 			rootCACert, err = ioutil.ReadFile(c.TLSCAFile)
 			if err != nil {
-				return nil, err
+				return clientv3.Config{}, err
 			}
 		} else {
 			rootCACert = []byte(c.TLSCA)
@@ -87,7 +87,7 @@ func NewClientV3Config(c *Config) (*clientv3.Config, error) {
 		rootCAs := x509.NewCertPool()
 		ok := rootCAs.AppendCertsFromPEM(rootCACert)
 		if !ok {
-			return nil, errors.New("failed to parse PEM file")
+			return clientv3.Config{}, errors.New("failed to parse PEM file")
 		}
 		tlsCfg.RootCAs = rootCAs
 		cfg.TLS = tlsCfg
@@ -98,18 +98,17 @@ func NewClientV3Config(c *Config) (*clientv3.Config, error) {
 			var err error
 			cert, err = tls.LoadX509KeyPair(c.TLSCertFile, c.TLSKeyFile)
 			if err != nil {
-				return nil, err
+				return clientv3.Config{}, err
 			}
 		} else {
 			var err error
 			cert, err = tls.X509KeyPair([]byte(c.TLSCert), []byte(c.TLSKey))
 			if err != nil {
-				return nil, err
+				return clientv3.Config{}, err
 			}
 		}
 		tlsCfg.Certificates = []tls.Certificate{cert}
 		cfg.TLS = tlsCfg
 	}
-	return &cfg, nil
+	return cfg, nil
 }
-

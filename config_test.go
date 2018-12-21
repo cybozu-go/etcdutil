@@ -2,12 +2,10 @@ package etcdutil
 
 import (
 	"encoding/json"
+	"github.com/BurntSushi/toml"
+	"gopkg.in/yaml.v2"
 	"reflect"
 	"testing"
-	"time"
-
-	"github.com/BurntSushi/toml"
-	yaml "gopkg.in/yaml.v2"
 )
 
 func testEtcdConfigYAML(t *testing.T) {
@@ -206,31 +204,8 @@ tls-key-file = "client.key"
 	}
 }
 
-func testEtcdClientv3Config(t *testing.T) {
-	t.Parallel()
-	input := Config{
-		Endpoints:   DefaultEndpoints,
-		Timeout:     DefaultTimeout,
-	}
-	clientv3Config, err := NewClientV3Config(&input)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if reflect.DeepEqual(clientv3Config.Endpoints, DefaultEndpoints) {
-		t.Error("clientv3Config.Endpoints != DefaultEndpoints")
-	}
-	expectedTimeout, err := time.ParseDuration(DefaultTimeout)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if clientv3Config.DialTimeout != expectedTimeout {
-		t.Error("clientv3Config.DialTimeout != expectedTimeout")
-	}
-}
-
 func TestEtcdutilConfig(t *testing.T) {
 	t.Run("etcdConfigYAML", testEtcdConfigYAML)
 	t.Run("etcdConfigJSON", testEtcdConfigJSON)
 	t.Run("etcdConfigTOML", testEtcdConfigTOML)
-	t.Run("etcdClientv3Config", testEtcdClientv3Config)
 }
