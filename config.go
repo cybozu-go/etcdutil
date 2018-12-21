@@ -1,5 +1,14 @@
 package etcdutil
 
+import (
+	"crypto/tls"
+	"crypto/x509"
+	"errors"
+	"github.com/coreos/etcd/clientv3"
+	"io/ioutil"
+	"time"
+)
+
 const (
 	// DefaultTimeout is default etcd connection timeout.
 	DefaultTimeout = "2s"
@@ -44,3 +53,63 @@ func NewConfig(prefix string) *Config {
 		Timeout:   DefaultTimeout,
 	}
 }
+
+// NewClientV3Config constructs clientv3.Config
+func NewClientV3Config(c *Config) (*clientv3.Config, error) {
+	timeout, err := time.ParseDuration(c.Timeout)
+	if err != nil {
+		return nil, err
+	}
+	// workaround for https://github.com/etcd-io/etcd/issues/9949
+	endpoints := make([]string, len(c.Endpoints))
+	copy(endpoints, c.Endpoints)
+	reorderEndpoints(endpoints, timeout)
+
+	cfg := clientv3.Config{
+		Endpoints:   endpoints,
+		DialTimeout: timeout,
+		Username:    c.Username,
+		Password:    c.Password,
+	}
+
+	tlsCfg := &tls.Config{}
+	if len(c.TLSCAFile) != 0 || len(c.TLSCA) != 0 {
+		var rootCACert []byte
+		if len(c.TLSCAFile) != 0 {
+			var err error
+			rootCACert, err = ioutil.ReadFile(c.TLSCAFile)
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			rootCACert = []byte(c.TLSCA)
+		}
+		rootCAs := x509.NewCertPool()
+		ok := rootCAs.AppendCertsFromPEM(rootCACert)
+		if !ok {
+			return nil, errors.New("failed to parse PEM file")
+		}
+		tlsCfg.RootCAs = rootCAs
+		cfg.TLS = tlsCfg
+	}
+	if (len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0) || (len(c.TLSCert) != 0 && len(c.TLSKey) != 0) {
+		var cert tls.Certificate
+		if len(c.TLSCertFile) != 0 && len(c.TLSKeyFile) != 0 {
+			var err error
+			cert, err = tls.LoadX509KeyPair(c.TLSCertFile, c.TLSKeyFile)
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			var err error
+			cert, err = tls.X509KeyPair([]byte(c.TLSCert), []byte(c.TLSKey))
+			if err != nil {
+				return nil, err
+			}
+		}
+		tlsCfg.Certificates = []tls.Certificate{cert}
+		cfg.TLS = tlsCfg
+	}
+	return &cfg, nil
+}
+
