@@ -19,13 +19,8 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 		return nil, err
 	}
 
-	// workaround for https://github.com/etcd-io/etcd/issues/9949
-	endpoints := make([]string, len(c.Endpoints))
-	copy(endpoints, c.Endpoints)
-	reorderEndpoints(endpoints, timeout)
-
 	cfg := clientv3.Config{
-		Endpoints:   endpoints,
+		Endpoints:   c.Endpoints,
 		DialTimeout: timeout,
 		DialOptions: []grpc.DialOption{grpc.WithBlock()},
 		Username:    c.Username,
