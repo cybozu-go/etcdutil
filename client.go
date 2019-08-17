@@ -9,6 +9,7 @@ import (
 
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/clientv3/namespace"
+	"google.golang.org/grpc"
 )
 
 // NewClient creates etcd client.
@@ -26,6 +27,7 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	cfg := clientv3.Config{
 		Endpoints:   endpoints,
 		DialTimeout: timeout,
+		DialOptions: []grpc.DialOption{grpc.WithBlock()},
 		Username:    c.Username,
 		Password:    c.Password,
 	}
