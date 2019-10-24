@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: quay.io/cybozu/golang:1.12-bionic
+      - image: quay.io/cybozu/golang:1.13-bionic
       - image: quay.io/coreos/etcd:v3.3
     working_directory: /work
     steps:
@@ -14,3 +14,8 @@ jobs:
       - run: go build ./...
       - run: go test -race -v ./...
       - run: go vet ./...
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build
