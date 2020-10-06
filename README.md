@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/cybozu-go/etcdutil.svg?maxAge=60)][releases]
 [![CircleCI](https://circleci.com/gh/cybozu-go/etcdutil.svg?style=svg)](https://circleci.com/gh/cybozu-go/etcdutil)
-[![GoDoc](https://godoc.org/github.com/cybozu-go/etcdutil?status.svg)][godoc]
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/cybozu-go/etcdutil?tab=overview)](https://pkg.go.dev/github.com/cybozu-go/etcdutil?tab=overview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cybozu-go/etcdutil)](https://goreportcard.com/report/github.com/cybozu-go/etcdutil)
 
 Add-ons for etcd
@@ -69,7 +69,7 @@ tls-key: |
 Usage
 -----
 
-Read [the documentation][godoc].
+Read [the documentation](https://pkg.go.dev/github.com/cybozu-go/etcdutil).
 
 License
 -------
@@ -77,5 +77,4 @@ License
 etcdutil is licensed under MIT license.
 
 [releases]: https://github.com/cybozu-go/etcdutil/releases
-[godoc]: https://godoc.org/github.com/cybozu-go/etcdutil
 [etcd]: https://etcd.io
