@@ -41,7 +41,7 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 		rootCAs := x509.NewCertPool()
 		ok := rootCAs.AppendCertsFromPEM(rootCACert)
 		if !ok {
-			return nil, errors.New("Failed to parse PEM file")
+			return nil, errors.New("failed to parse PEM file")
 		}
 		tlsCfg.RootCAs = rootCAs
 		cfg.TLS = tlsCfg
