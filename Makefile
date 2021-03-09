@@ -1,5 +1,11 @@
 # Makefile for etcdutil
 
+## Dependency versions
+ETCD_VER=v3.4.14
+
+## DON'T EDIT BELOW THIS LINE
+SUDO=sudo
+
 .PHONY: all
 all:
 	@echo "Specify one of these targets:"
@@ -19,3 +25,8 @@ test: setup
 setup:
 	cd /tmp; env GOFLAGS= GO111MODULE=on go get golang.org/x/tools/cmd/goimports
 	cd /tmp; env GOFLAGS= GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck
+	curl -L https://github.com/etcd-io/etcd/releases/download/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+	mkdir /tmp/etcd
+	tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd --strip-components=1
+	$(SUDO) mv /tmp/etcd/etcd /usr/local/bin/
+	rm -rf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz /tmp/etcd 
