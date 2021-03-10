@@ -1,3 +1,4 @@
+[![GitHub release](https://img.shields.io/github/release/cybozu-go/etcdutil.svg?maxAge=60)][releases]
 [![CI](https://github.com/cybozu-go/etcdutil/workflows/main/badge.svg)](https://github.com/cybozu-go/etcdutil/actions)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/cybozu-go/etcdutil?tab=overview)](https://pkg.go.dev/github.com/cybozu-go/etcdutil?tab=overview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cybozu-go/etcdutil)](https://goreportcard.com/report/github.com/cybozu-go/etcdutil)

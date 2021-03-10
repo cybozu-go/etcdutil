@@ -3,7 +3,6 @@
 ## Dependency versions
 ETCD_VER=v3.3.10
 
-## DON'T EDIT BELOW THIS LINE
 SUDO=sudo
 
 .PHONY: all
@@ -14,7 +13,7 @@ all:
 	@echo "    setup       - install dependencies."
 
 .PHONY: test
-test: setup
+test:
 	test -z "$(gofmt -s -d . | tee /dev/stderr)"
 	staticcheck .
 	go build ./...
