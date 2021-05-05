@@ -20,11 +20,14 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	}
 
 	cfg := clientv3.Config{
-		Endpoints:   c.Endpoints,
-		DialTimeout: timeout,
-		DialOptions: []grpc.DialOption{grpc.WithBlock()},
-		Username:    c.Username,
-		Password:    c.Password,
+		Endpoints:            c.Endpoints,
+		DialTimeout:          timeout,
+		DialOptions:          []grpc.DialOption{grpc.WithBlock()},
+		DialKeepAliveTime:    10 * time.Second,
+		DialKeepAliveTimeout: 2 * timeout,
+		PermitWithoutStream:  true,
+		Username:             c.Username,
+		Password:             c.Password,
 	}
 
 	tlsCfg := &tls.Config{}
