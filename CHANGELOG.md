@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.3.7] - 2021-05-07
+### Fixed
+- Fix release CI workflow (#35).
+
 ## [1.3.6] - 2021-05-06
 ### Changed
 - Enable keepalive checks (#34).
@@ -57,7 +61,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.3.6...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.3.7...HEAD
+[1.3.7]: https://github.com/cybozu-go/etcdutil/compare/v1.3.6...v1.3.7
 [1.3.6]: https://github.com/cybozu-go/etcdutil/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/cybozu-go/etcdutil/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/cybozu-go/etcdutil/compare/v1.3.3...v1.3.4
