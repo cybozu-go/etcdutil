@@ -74,7 +74,7 @@ Read [the documentation](https://pkg.go.dev/github.com/cybozu-go/etcdutil).
 License
 -------
 
-etcdutil is licensed under MIT license.
+etcdutil is licensed under the Apache License, Version 2.0.
 
 [releases]: https://github.com/cybozu-go/etcdutil/releases
 [etcd]: https://etcd.io
