@@ -8,7 +8,7 @@ require (
 	github.com/pelletier/go-toml v1.9.1
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/spf13/pflag v1.0.5
-	go.etcd.io/etcd v0.5.0-alpha.5.0.20210512015243-d19fbe541bf9
+	go.etcd.io/etcd v0.5.0-alpha.5.0.20211004023027-19e2e70e4f50
 	go.uber.org/atomic v1.4.0 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
 	google.golang.org/grpc v1.26.0
