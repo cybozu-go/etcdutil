@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.0] - 2021-12-20
+
+### Changed
+- update etcd to v3.5.1 (#42)
+
 ## [1.4.1] - 2021-10-04
 
 ### Changed
@@ -71,7 +76,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.4.1...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/cybozu-go/etcdutil/compare/v1.4.1...v1.5.0
 [1.4.1]: https://github.com/cybozu-go/etcdutil/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/cybozu-go/etcdutil/compare/v1.3.7...v1.4.0
 [1.3.7]: https://github.com/cybozu-go/etcdutil/compare/v1.3.6...v1.3.7
