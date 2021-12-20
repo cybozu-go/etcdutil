@@ -1,19 +1,29 @@
 module github.com/cybozu-go/etcdutil
 
+go 1.17
+
 require (
-	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e // indirect
-	github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f // indirect
-	github.com/dustin/go-humanize v1.0.0 // indirect
-	github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef // indirect
-	github.com/pelletier/go-toml v1.9.1
-	github.com/pkg/errors v0.8.1 // indirect
+	github.com/pelletier/go-toml v1.9.4
 	github.com/spf13/pflag v1.0.5
-	go.etcd.io/etcd v0.5.0-alpha.5.0.20211004023027-19e2e70e4f50
-	go.uber.org/atomic v1.4.0 // indirect
-	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
-	google.golang.org/grpc v1.26.0
-	gopkg.in/yaml.v2 v2.4.0 // indirect
-	sigs.k8s.io/yaml v1.2.0
+	go.etcd.io/etcd/client/v3 v3.5.1
+	google.golang.org/grpc v1.43.0
+	sigs.k8s.io/yaml v1.3.0
 )
 
-go 1.13
+require (
+	github.com/coreos/go-semver v0.3.0 // indirect
+	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
+	github.com/gogo/protobuf v1.3.2 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	go.etcd.io/etcd/api/v3 v3.5.1 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.5.1 // indirect
+	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.7.0 // indirect
+	go.uber.org/zap v1.19.1 // indirect
+	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
+	golang.org/x/text v0.3.7 // indirect
+	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
+)

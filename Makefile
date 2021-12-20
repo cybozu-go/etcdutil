@@ -1,7 +1,7 @@
 # Makefile for etcdutil
 
 ## Dependency versions
-ETCD_VER=v3.4.16
+ETCD_VER=v3.5.1
 
 SUDO=sudo
 
@@ -22,8 +22,8 @@ test:
 
 .PHONY: setup
 setup:
-	cd /tmp; env GOFLAGS= GO111MODULE=on go get golang.org/x/tools/cmd/goimports
-	cd /tmp; env GOFLAGS= GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck
+	cd /tmp; go install golang.org/x/tools/cmd/goimports@latest
+	cd /tmp; go install honnef.co/go/tools/cmd/staticcheck@latest
 	curl -L https://github.com/etcd-io/etcd/releases/download/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 	mkdir /tmp/etcd
 	tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd --strip-components=1
