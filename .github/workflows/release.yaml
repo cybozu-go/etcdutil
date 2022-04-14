@@ -10,14 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            See [CHANGELOG.md](./CHANGELOG.md) for details.
-          draft: false
-          prerelease: ${{ contains(github.ref, '-') }}
+        run: |
+          version=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+          if echo $version | grep -q -e '-'; then prerelease=-p; fi
+          gh release create $version $prerelease \
+            -t "Release $version"  \
+            -n "See [CHANGELOG.md](./CHANGELOG.md) for details."

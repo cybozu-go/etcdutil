@@ -1,7 +1,7 @@
 # Makefile for etcdutil
 
 ## Dependency versions
-ETCD_VER=v3.5.1
+ETCD_VER=v3.5.3
 
 SUDO=sudo
 
@@ -19,6 +19,11 @@ test:
 	go build ./...
 	go test -race -v ./...
 	go vet ./...
+
+.PHONY: check-generate
+check-generate:
+	go mod tidy
+	git diff --exit-code --name-only
 
 .PHONY: setup
 setup:
