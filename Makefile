@@ -20,6 +20,11 @@ test:
 	go test -race -v ./...
 	go vet ./...
 
+.PHONY: check-generate
+check-generate:
+	go mod tidy
+	git diff --exit-code --name-only
+
 .PHONY: setup
 setup:
 	cd /tmp; go install golang.org/x/tools/cmd/goimports@latest
