@@ -33,28 +33,43 @@ It should look like:
 Bump version
 ------------
 
-1. Determine a new version number.  Let it write `$VERSION` as `VERSION=x.y.z`.
+1. Determine a new version number. Then set `VERSION` variable.
+
+    ```console
+    # Set VERSION and confirm it. It should not have "v" prefix.
+    $ VERSION=x.y.x
+    $ echo $VERSION
+    ```
+
 2. Make a branch to release
 
     ```console
     $ git neco dev "$VERSION"
     ```
 
-4. Edit `CHANGELOG.md` for the new version ([example][]).
-5. Commit the change and push it.
+3. Edit `CHANGELOG.md` for the new version ([example][]).
+4. Commit the change and push it.
 
     ```console
     $ git commit -a -m "Bump version to $VERSION"
     $ git neco review
     ```
 
-6. Merge this branch.
+5. Merge this branch.
 6. Add a git tag to the main HEAD, then push it.
 
     ```console
+    # Set VERSION again.
+    $ VERSION=x.y.x
+    $ echo $VERSION
+
     $ git checkout main
     $ git pull
     $ git tag -a -m "Release v$VERSION" "v$VERSION"
+
+    # Make sure the release tag exists.
+    $ git tag -ln | grep $VERSION
+
     $ git push origin "v$VERSION"
     ```
 
