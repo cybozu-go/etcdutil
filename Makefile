@@ -1,7 +1,7 @@
 # Makefile for etcdutil
 
 ## Dependency versions
-ETCD_VER=v3.5.3
+ETCD_VER=v3.5.4
 
 SUDO=sudo
 
