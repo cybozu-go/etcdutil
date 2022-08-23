@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.1] - 2022-08-23
+
+### Changed
 - Update dependencies (#48)
     - Update etcd to v3.5.4
     - Update Golang to 1.18
@@ -85,7 +88,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.1...HEAD
+[1.6.1]: https://github.com/cybozu-go/etcdutil/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/cybozu-go/etcdutil/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/cybozu-go/etcdutil/compare/v1.4.1...v1.5.0
 [1.4.1]: https://github.com/cybozu-go/etcdutil/compare/v1.4.0...v1.4.1
