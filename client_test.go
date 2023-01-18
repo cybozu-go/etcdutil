@@ -1,7 +1,6 @@
 package etcdutil
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -20,7 +19,7 @@ func testMain(m *testing.M) int {
 		os.Exit(code)
 	}
 
-	etcdPath, err := ioutil.TempDir("", "etcdutil-test")
+	etcdPath, err := os.MkdirTemp("", "etcdutil-test")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"errors"
-	"io/ioutil"
+	"os"
 	"time"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
@@ -34,7 +34,7 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	if len(c.TLSCAFile) != 0 || len(c.TLSCA) != 0 {
 		var rootCACert []byte
 		if len(c.TLSCAFile) != 0 {
-			rootCACert, err = ioutil.ReadFile(c.TLSCAFile)
+			rootCACert, err = os.ReadFile(c.TLSCAFile)
 			if err != nil {
 				return nil, err
 			}
