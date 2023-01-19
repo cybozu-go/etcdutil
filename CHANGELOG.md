@@ -5,56 +5,61 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Update dependencies in [#52](https://github.com/cybozu-go/etcdutil/pull/52)
+    - Update etcd to v3.5.6
+    - Update Golang to 1.19
+
 ## [1.6.2] - 2022-11-08
 
 ### Changed
-- Update etcd to v3.5.5 (#50)
+- Update etcd to v3.5.5 ([#50](https://github.com/cybozu-go/etcdutil/pull/50))
 
 ## [1.6.1] - 2022-08-23
 
 ### Changed
-- Update dependencies (#48)
+- Update dependencies ([#48](https://github.com/cybozu-go/etcdutil/pull/48))
     - Update etcd to v3.5.4
     - Update Golang to 1.18
 
 ## [1.6.0] - 2022-04-14
 
 ### Changed
-- update etcd to v3.5.3 and some dependencies (#44)
+- update etcd to v3.5.3 and some dependencies ([#44](https://github.com/cybozu-go/etcdutil/pull/44))
 
 ## [1.5.0] - 2021-12-20
 
 ### Changed
-- update etcd to v3.5.1 (#42)
+- update etcd to v3.5.1 ([#42](https://github.com/cybozu-go/etcdutil/pull/42))
 
 ## [1.4.1] - 2021-10-04
 
 ### Changed
-- Update etcd to v3.4.17 (#40).
+- Update etcd to v3.4.17 ([#40](https://github.com/cybozu-go/etcdutil/pull/40)).
 
 ## [1.4.0] - 2021-05-19
 
 ### Changed
-- Update for etcd 3.4.16 (#37).
+- Update for etcd 3.4.16 ([#37](https://github.com/cybozu-go/etcdutil/pull/37)).
 
 ## [1.3.7] - 2021-05-07
 ### Fixed
-- Fix release CI workflow (#35).
+- Fix release CI workflow ([#35](https://github.com/cybozu-go/etcdutil/pull/35)).
 
 ## [1.3.6] - 2021-05-06
 ### Changed
-- Enable keepalive checks (#34).
+- Enable keepalive checks ([#34](https://github.com/cybozu-go/etcdutil/pull/34)).
 
 ## [1.3.5] - 2020-09-10
 ### Changed
 - Update etcd client library as of [etcd-3.3.25](https://github.com/etcd-io/etcd/releases/tag/v3.3.25).
 
 ### Fixed
-- Fix NewConfig() to return copy of default object (#28).
+- Fix NewConfig() to return copy of default object ([#28](https://github.com/cybozu-go/etcdutil/pull/28)).
 
 ## [1.3.4] - 2019-10-24
 ### Changed
-- Update golang 1.13.3 (#22)
+- Update golang 1.13.3 ([#22](https://github.com/cybozu-go/etcdutil/pull/22))
 
 ## [1.3.3] - 2019-08-20
 ### Changed
@@ -63,7 +68,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.3.2] - 2019-08-19
 ### Changed
 - Update etcd client library as of [etcd-3.3.14](https://github.com/etcd-io/etcd/releases/tag/v3.3.14).
-- Revert #11 "Workaround for [etcd bug #9949](https://github.com/etcd-io/etcd/issues/9949)".
+- Revert [#11](https://github.com/cybozu-go/etcdutil/pull/11) "Workaround for [etcd bug #9949](https://github.com/etcd-io/etcd/issues/9949)".
 
 ## [1.3.1] - 2018-11-19
 ### Changed
@@ -75,15 +80,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.2.2] - 2018-10-10
 ### Changed
-- Update Go module dependencies (#9).
+- Update Go module dependencies ([#9](https://github.com/cybozu-go/etcdutil/pull/9)).
 
 ## [1.2.1] - 2018-10-10
 ### Changed
-- Remove http://127.0.0.1:4001 from the default endpoints (#8).
+- Remove http://127.0.0.1:4001 from the default endpoints ([#8](https://github.com/cybozu-go/etcdutil/pull/8)).
 
 ## [1.2.0] - 2018-10-09
 ### Added
-- Common command-line flags (#7).
+- Common command-line flags ([#7](https://github.com/cybozu-go/etcdutil/pull/7)).
 
 ## [1.1.0] - 2018-09-14
 ### Added

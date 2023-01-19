@@ -2,7 +2,7 @@ package etcdutil
 
 import (
 	"flag"
-	"io/ioutil"
+	"io"
 	"reflect"
 	"testing"
 )
@@ -137,7 +137,7 @@ func TestFlags(t *testing.T) {
 
 	for _, c := range testCases {
 		fs := flag.NewFlagSet("test", flag.ContinueOnError)
-		fs.SetOutput(ioutil.Discard)
+		fs.SetOutput(io.Discard)
 		cfg := NewConfig("foo")
 		cfg.AddFlags(fs)
 
