@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.5] - 2023-07-14
+
 ### Changed
 - Update dependencies in [#58](https://github.com/cybozu-go/etcdutil/pull/58)
   - Update etcd to v3.5.9
@@ -111,7 +113,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.4...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.5...HEAD
+[1.6.5]: https://github.com/cybozu-go/etcdutil/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/cybozu-go/etcdutil/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/cybozu-go/etcdutil/compare/v1.6.2...v1.6.3
 [1.6.2]: https://github.com/cybozu-go/etcdutil/compare/v1.6.1...v1.6.2
