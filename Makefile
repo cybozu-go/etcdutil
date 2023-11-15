@@ -1,12 +1,11 @@
 # Makefile for etcdutil
 
-## Dependency versions
-ETCD_VER=v3.5.10
-
+ETCD_VER=$(shell go list -m -f '{{.Version}}' go.etcd.io/etcd/client/v3)
 SUDO=sudo
 
 .PHONY: all
 all:
+	echo $(ETCD_VER)
 	@echo "Specify one of these targets:"
 	@echo
 	@echo "    test        - run single host tests."
@@ -14,7 +13,6 @@ all:
 
 .PHONY: test
 test:
-	test -z "$(gofmt -s -d . | tee /dev/stderr)"
 	staticcheck .
 	go build ./...
 	go test -race -v ./...
