@@ -5,6 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.6] - 2023-11-15
+
+### Changed
+- Update dependencies in [#62](https://github.com/cybozu-go/etcdutil/pull/62), [#63](https://github.com/cybozu-go/etcdutil/pull/63)
+  - Update etcd to v3.5.10
+  - Update Golang to 1.21
+- Bump golang.org/x/net from 0.12.0 to 0.17.0 [#60](https://github.com/cybozu-go/etcdutil/pull/60)
+- Bump google.golang.org/grpc from 1.56.2 to 1.56.3 [#61](https://github.com/cybozu-go/etcdutil/pull/61)
+
 ## [1.6.5] - 2023-07-14
 
 ### Changed
@@ -113,7 +122,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.5...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.6...HEAD
+[1.6.6]: https://github.com/cybozu-go/etcdutil/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/cybozu-go/etcdutil/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/cybozu-go/etcdutil/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/cybozu-go/etcdutil/compare/v1.6.2...v1.6.3
