@@ -13,12 +13,6 @@ const (
 )
 
 func testMain(m *testing.M) int {
-	ci := os.Getenv("CI") == "true"
-	if ci {
-		code := m.Run()
-		os.Exit(code)
-	}
-
 	etcdPath, err := os.MkdirTemp("", "etcdutil-test")
 	if err != nil {
 		log.Fatal(err)
@@ -53,16 +47,8 @@ func TestMain(m *testing.M) {
 func testEtcdClient(t *testing.T) {
 	t.Parallel()
 
-	var clientURL string
-	ci := os.Getenv("CI") == "true"
-	if ci {
-		clientURL = "http://localhost:2379"
-	} else {
-		clientURL = etcdClientURL
-	}
-
 	cfg := NewConfig(t.Name() + "/")
-	cfg.Endpoints = []string{clientURL}
+	cfg.Endpoints = []string{etcdClientURL}
 	_, err := NewClient(cfg)
 	if err != nil {
 		t.Fatal(err)
