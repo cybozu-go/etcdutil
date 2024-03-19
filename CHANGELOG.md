@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.7] - 2024-03-19
+
+### Changed
+- Update dependencies in [#67](https://github.com/cybozu-go/etcdutil/pull/67)
+- refactor test in [#65](https://github.com/cybozu-go/etcdutil/pull/65)
+- Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 [#66](https://github.com/cybozu-go/etcdutil/pull/66)
+
 ## [1.6.6] - 2023-11-15
 
 ### Changed
@@ -122,7 +129,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.6...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.7...HEAD
+[1.6.7]: https://github.com/cybozu-go/etcdutil/compare/v1.6.6...v1.6.7
 [1.6.6]: https://github.com/cybozu-go/etcdutil/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/cybozu-go/etcdutil/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/cybozu-go/etcdutil/compare/v1.6.3...v1.6.4
