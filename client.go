@@ -20,8 +20,10 @@ func NewClient(c *Config) (*clientv3.Client, error) {
 	}
 
 	cfg := clientv3.Config{
-		Endpoints:            c.Endpoints,
-		DialTimeout:          timeout,
+		Endpoints:   c.Endpoints,
+		DialTimeout: timeout,
+		//lint:ignore SA1019 etcd client requires to use grpc.WithBlocks()
+		// see https://etcd.io/docs/v3.4/upgrades/upgrade_3_4/#require-grpcwithblock-for-client-dial
 		DialOptions:          []grpc.DialOption{grpc.WithBlock()},
 		DialKeepAliveTime:    10 * time.Second,
 		DialKeepAliveTimeout: 2 * timeout,
