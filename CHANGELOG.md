@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.8] - 2024-07-12
+
+### Changed
+- Bump golang.org/x/net from 0.22.0 to 0.23.0 [#69](https://github.com/cybozu-go/etcdutil/pull/69)
+- Update dependencies in [#70](https://github.com/cybozu-go/etcdutil/pull/70)
+- Update release procedure to use gh command [#71](https://github.com/cybozu-go/etcdutil/pull/71)
+
 ## [1.6.7] - 2024-03-19
 
 ### Changed
@@ -129,7 +136,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.7...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.8...HEAD
+[1.6.8]: https://github.com/cybozu-go/etcdutil/compare/v1.6.7...v1.6.8
 [1.6.7]: https://github.com/cybozu-go/etcdutil/compare/v1.6.6...v1.6.7
 [1.6.6]: https://github.com/cybozu-go/etcdutil/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/cybozu-go/etcdutil/compare/v1.6.4...v1.6.5
