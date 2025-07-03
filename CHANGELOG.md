@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Update dependencies in [#77](https://github.com/cybozu-go/etcdutil/pull/77)
+    - Update etcd to v3.6.1
+    - Update Golang to 1.24.4
+
 ## [1.6.10] - 2025-03-07
 
 ### Changed
