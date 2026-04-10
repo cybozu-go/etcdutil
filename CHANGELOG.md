@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.14] - 2026-04-10
+
+### Changed
+
+- Pin external dependencies to specific versions in [#83](https://github.com/cybozu-go/etcdutil/pull/83)
+
 ## [1.6.13] - 2026-03-18
 
 ### Changed
@@ -179,7 +185,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.13...HEAD
+[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.14...HEAD
+[1.6.14]: https://github.com/cybozu-go/etcdutil/compare/v1.6.13...v1.6.14
 [1.6.13]: https://github.com/cybozu-go/etcdutil/compare/v1.6.12...v1.6.13
 [1.6.12]: https://github.com/cybozu-go/etcdutil/compare/v1.6.11...v1.6.12
 [1.6.11]: https://github.com/cybozu-go/etcdutil/compare/v1.6.10...v1.6.11
