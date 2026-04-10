@@ -13,7 +13,7 @@ all:
 
 .PHONY: test
 test:
-	staticcheck .
+	go tool staticcheck .
 	go build ./...
 	go test -race -v ./...
 	go vet ./...
@@ -25,8 +25,6 @@ check-generate:
 
 .PHONY: setup
 setup:
-	cd /tmp; go install golang.org/x/tools/cmd/goimports@latest
-	cd /tmp; go install honnef.co/go/tools/cmd/staticcheck@latest
 	curl -L https://github.com/etcd-io/etcd/releases/download/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 	mkdir /tmp/etcd
 	tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd --strip-components=1
