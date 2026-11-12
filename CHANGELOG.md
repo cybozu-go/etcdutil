@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
+> [!NOTE]
+> This file is no longer updated. It contains the changes up to v1.16.15.
+> For later releases, see [GitHub Releases](https://github.com/cybozu-go/etcdutil/releases).
 
-## [Unreleased]
+All notable changes to this project up to v1.16.15 are documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.6.14] - 2026-07-02
 
@@ -193,7 +195,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first release.
 
-[Unreleased]: https://github.com/cybozu-go/etcdutil/compare/v1.6.15...HEAD
 [1.6.15]: https://github.com/cybozu-go/etcdutil/compare/v1.6.14...v1.6.15
 [1.6.14]: https://github.com/cybozu-go/etcdutil/compare/v1.6.13...v1.6.14
 [1.6.13]: https://github.com/cybozu-go/etcdutil/compare/v1.6.12...v1.6.13
