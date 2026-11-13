@@ -1,6 +1,8 @@
 package etcdutil
 
 import (
+	"context"
+	"errors"
 	"log"
 	"os"
 	"os/exec"
@@ -10,6 +12,8 @@ import (
 const (
 	etcdClientURL = "http://localhost:12379"
 	etcdPeerURL   = "http://localhost:12380"
+	// nothing listens on this URL.
+	unreachableURL = "http://localhost:12381"
 )
 
 func testMain(m *testing.M) int {
@@ -49,12 +53,28 @@ func testEtcdClient(t *testing.T) {
 
 	cfg := NewConfig(t.Name() + "/")
 	cfg.Endpoints = []string{etcdClientURL}
-	_, err := NewClient(cfg)
+	client, err := NewClient(cfg)
 	if err != nil {
 		t.Fatal(err)
+	}
+	client.Close()
+}
+
+func testEtcdClientUnreachable(t *testing.T) {
+	cfg := NewConfig(t.Name() + "/")
+	cfg.Endpoints = []string{unreachableURL}
+	cfg.Timeout = "1s"
+
+	client, err := NewClient(cfg)
+	if client != nil {
+		defer client.Close()
+	}
+	if !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("expected deadline exceeded, got %v", err)
 	}
 }
 
 func TestEtcdutilClient(t *testing.T) {
 	t.Run("etcdClient", testEtcdClient)
+	t.Run("etcdClientUnreachable", testEtcdClientUnreachable)
 }

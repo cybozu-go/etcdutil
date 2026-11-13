@@ -17,6 +17,8 @@ type Config struct {
 	// Prefix is etcd prefix key.
 	Prefix string `json:"prefix" toml:"prefix"`
 	// Timeout is dial timeout of the etcd client connection.
+	// NewClient waits up to this duration for the connection to become ready.
+	// If it is zero, NewClient waits without a deadline.
 	Timeout string `json:"timeout" toml:"timeout"`
 	// Username is username for loging in to the etcd.
 	Username string `json:"username" toml:"username"`
